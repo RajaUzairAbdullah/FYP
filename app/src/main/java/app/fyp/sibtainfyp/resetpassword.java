@@ -1,24 +1,23 @@
 package app.fyp.sibtainfyp;
 
-import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-public class login extends AppCompatActivity {
+public class resetpassword extends AppCompatActivity {
 
-        TextView signuptext,forgotpasstxt;
+    TextView signuptext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_resetpassword);
 
         signuptext = findViewById(R.id.signuptxt);
-        forgotpasstxt = findViewById(R.id.forgotpasstxt);
-
 
         //Login text Clicked
         signuptext.setOnClickListener(new View.OnClickListener() {
@@ -32,18 +31,5 @@ public class login extends AppCompatActivity {
         });
         //Login text Clicked
 
-
-
-        //Login text Clicked
-        forgotpasstxt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.v("signin ","Signin Text Clicked");
-                Intent intent=new Intent(getApplicationContext(),resetpassword.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-        //Login text Clicked
     }
 }

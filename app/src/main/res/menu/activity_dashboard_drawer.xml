@@ -30,6 +30,10 @@
             android:title="@string/menu_logout" />
     </group>
 
-
-
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/logoutbtn"
+        android:title="" />
 </menu>
+
+
