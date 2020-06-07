@@ -50,7 +50,7 @@
         android:textSize="15dp" />
 
     <EditText
-        android:id="@+id/emailfield"
+        android:id="@+id/shop_ownername"
         android:paddingLeft="20dp"
         android:hint="Enter Name"
         android:layout_width="wrap_content"
@@ -60,7 +60,7 @@
         android:background="@drawable/inputfield" />
 
     <EditText
-        android:id="@+id/shopnameild"
+        android:id="@+id/shopname"
         android:paddingLeft="20dp"
         android:hint="Enter Shop Name"
         android:layout_width="wrap_content"
@@ -70,7 +70,7 @@
         android:background="@drawable/inputfield" />
 
     <EditText
-        android:id="@+id/namefield"
+        android:id="@+id/shop_owner_email"
         android:paddingLeft="20dp"
         android:hint="Enter Email"
         android:layout_width="wrap_content"

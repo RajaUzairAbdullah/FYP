@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "20179547664",
+    "firebase_url": "https://sibtainfyp.firebaseio.com",
+    "project_id": "sibtainfyp",
+    "storage_bucket": "sibtainfyp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:20179547664:android:0ddd4924b3e26a845d3c95",
+        "android_client_info": {
+          "package_name": "app.fyp.sibtainfyp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "20179547664-kcfjshddldkljodm69kdvi5g6b0lda06.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.fyp.sibtainfyp",
+            "certificate_hash": "dffaf9a7fb6bae0657e425c82e5ae32dd64f6927"
+          }
+        },
+        {
+          "client_id": "20179547664-saoia5182npd0fbsp9qa06e8hpc1glof.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlcbMlRI3M4ZlvCD455KURuQ4wEZyvsU0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "20179547664-saoia5182npd0fbsp9qa06e8hpc1glof.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

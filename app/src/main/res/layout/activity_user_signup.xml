@@ -49,9 +49,13 @@
         android:textSize="15dp" />
 
     <EditText
-        android:id="@+id/emailfield"
+        android:id="@+id/namefield"
         android:paddingLeft="20dp"
         android:hint="Enter Name"
+        android:maxLines="1"
+        android:inputType="text"
+        android:scrollHorizontally="true"
+        android:ellipsize="end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -59,9 +63,13 @@
         android:background="@drawable/inputfield" />
 
     <EditText
-        android:id="@+id/namefield"
+        android:id="@+id/emailfield"
         android:paddingLeft="20dp"
         android:hint="Enter Email"
+        android:maxLines="1"
+        android:inputType="text"
+        android:scrollHorizontally="true"
+        android:ellipsize="end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -70,6 +78,9 @@
 
     <EditText
         android:id="@+id/passfield"
+        android:maxLines="1"
+        android:scrollHorizontally="true"
+        android:ellipsize="end"
         android:paddingLeft="20dp"
         android:hint="Enter Password"
         android:inputType="textPassword"
@@ -83,6 +94,9 @@
     <EditText
         android:id="@+id/another_passfield"
         android:paddingLeft="20dp"
+        android:maxLines="1"
+        android:scrollHorizontally="true"
+        android:ellipsize="end"
         android:hint="Enter Again Password"
         android:inputType="textPassword"
         android:layout_width="wrap_content"

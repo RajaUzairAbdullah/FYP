@@ -2,6 +2,8 @@ package app.fyp.sibtainfyp;
 
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +18,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class welcome extends AppCompatActivity {
 
@@ -107,6 +111,7 @@ public class welcome extends AppCompatActivity {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             // Signed in successfully, show authenticated UI.
+            String Name = account.getDisplayName();
             startActivity(new Intent(welcome.this, Dashboard.class));
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
@@ -117,13 +122,20 @@ public class welcome extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {
-        // Check for existing Google Sign In account, if the user is already signed in
-        // the GoogleSignInAccount will be non-null.
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        if(account != null) {
-            startActivity(new Intent(welcome.this, Dashboard.class));
-        }
+    public void onStart() {
         super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+
+            Intent intent=new Intent(getApplicationContext(),Dashboard.class);
+            startActivity(intent);
+            finish();
+
+        }else{
+            Toast.makeText(getApplicationContext(), "Not Logged in ",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 }
