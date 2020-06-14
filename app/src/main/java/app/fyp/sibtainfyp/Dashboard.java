@@ -49,6 +49,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
     public Button logoutbtn;
     public DatabaseReference databaseReference;
     public FirebaseUser user;
+    public long maxval=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,8 +120,6 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             }
 
         });
-
-
 
 
 

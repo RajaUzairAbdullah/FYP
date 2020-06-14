@@ -131,8 +131,6 @@ public class login extends AppCompatActivity {
             // Check if user's email is verified
             boolean emailVerified = user.isEmailVerified();
 
-            // The user's ID, unique to the Firebase project. Do NOT use this value to
-            // authenticate with your backend server, if you have one. Use
             // FirebaseUser.getIdToken() instead.
             String uid = user.getUid();
             Toast.makeText(getApplicationContext(), uid,

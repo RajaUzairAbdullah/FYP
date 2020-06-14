@@ -39,17 +39,27 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class shop_location extends AppCompatActivity implements OnMapReadyCallback, LocationListener,GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
+
+    private FirebaseAuth mAuth;
+
+    public DatabaseReference databaseReference;
+    public long maxval=0;
 
 
     public Button savloc;
     int PERMISSION_ID = 44;
     FusedLocationProviderClient mFusedLocationClient;
     private GoogleMap map;
-    public double lat,lon;
-    Location location;
+    public double maplatitude,maplongitude;
 
     //new implementataion
     private GoogleMap mMap;
@@ -72,8 +82,23 @@ public class shop_location extends AppCompatActivity implements OnMapReadyCallba
         savloc = (Button) findViewById(R.id.saveloc);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+
+
         getLastLocation();
 
+        //Getting intent Extra Data
+
+        owner_name = getIntent().getExtras().getString("ShopOwner");
+        shop_name = getIntent().getExtras().getString("ShopName");
+        owner_email = getIntent().getExtras().getString("OwnerEmail");
+        ownervalidated_pass = getIntent().getExtras().getString("OwnerPass");
+
+        Toast.makeText(getApplicationContext(),owner_name+ " " +shop_name+ " "+owner_email,Toast.LENGTH_SHORT).show();
+
+
+        //Gettng intent Extra Data
 
 
         //Login text Clicked
@@ -81,29 +106,22 @@ public class shop_location extends AppCompatActivity implements OnMapReadyCallba
             @Override
             public void onClick(View view) {
                 Log.v("saveloc ","save loc btn Text Clicked");
-//                Intent intent=new Intent(getApplicationContext(),Dashboard.class);
-//                startActivity(intent);
-//                finish();
+//                Toast.makeText(getApplicationContext(), lat+"<-->"+lon, Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(getApplicationContext(),ShopServices.class);
+                intent.putExtra("ShopOwner",owner_name);
+                intent.putExtra("ShopName",shop_name);
+                intent.putExtra("OwnerEmail",owner_email);
+                intent.putExtra("OwnerPass",ownervalidated_pass);
+                intent.putExtra("Latitude",maplatitude);
+                intent.putExtra("Longitude",maplongitude);
+                startActivity(intent);
+                finish();
             }
         });
         //Login text Clicked
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-
-
-        //Getting intent Extra Data
-
-        owner_name = getIntent().getExtras().getString("ShopOwner");
-        shop_name = getIntent().getExtras().getString("ShopName");
-        owner_email = getIntent().getExtras().getString("OwnerEmail");
-
-        Toast.makeText(getApplicationContext(),owner_name+ "" +shop_name+ " "+owner_email,Toast.LENGTH_SHORT).show();
-
-
-        //Gettng intent Extra Data
-
 
     }
 
@@ -258,11 +276,11 @@ public class shop_location extends AppCompatActivity implements OnMapReadyCallba
                 map.clear();
                 map.addMarker(new MarkerOptions().position(latLng).title("New Marker on click"));
                 map.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                maplatitude = latLng.latitude ;
+                maplongitude = latLng.longitude ;
+                
             }
         });
-        //LatLng loc = new LatLng(lat, lng);
-        //mMap.addMarker(new MarkerOptions().position(loc).title("New Marker"));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
     }
 
     @Override
@@ -270,12 +288,6 @@ public class shop_location extends AppCompatActivity implements OnMapReadyCallba
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                 mGoogleApiClient);
         if (mLastLocation != null) {
-            lat = mLastLocation.getLatitude();
-            lonn = mLastLocation.getLongitude();
-
-            LatLng loc = new LatLng(lat, lonn);
-            map.addMarker(new MarkerOptions().position(loc).title("New Marker"));
-            map.moveCamera(CameraUpdateFactory.newLatLng(loc));
         }
     }
 

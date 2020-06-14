@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        <activity android:name=".ValidateScreen"></activity>
+        <activity android:name=".ShopServices"></activity>
+        <activity android:name=".ValidateScreen" />
         <activity android:name=".resetpassword" />
         <activity
             android:name=".Dashboard"

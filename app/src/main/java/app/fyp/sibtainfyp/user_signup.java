@@ -125,8 +125,10 @@ public class user_signup extends AppCompatActivity {
                                         String pass = md5(txtpass.getText().toString());
                                         myRef.child(UID).child("Pass").setValue(pass);
                                         myRef.child(UID).child("UserType").setValue("User");
+
+                                        FirebaseAuth.getInstance().signOut();
                                         Toast.makeText(getApplicationContext(), pass ,Toast.LENGTH_SHORT).show();
-                                        Intent intent=new Intent(getApplicationContext(),Dashboard.class);
+                                        Intent intent=new Intent(getApplicationContext(),confirmation.class);
                                         startActivity(intent);
                                         finish();
                                     } else {
