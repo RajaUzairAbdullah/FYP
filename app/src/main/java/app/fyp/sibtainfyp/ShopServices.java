@@ -159,7 +159,15 @@ public class ShopServices extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(adapter.serviceselected.size()!=0){
+
+                    FirebaseAuth.getInstance().signOut();
+
+                    databaseReference.child("Shops").child(String.valueOf(maxval+1)).child("ShopName").setValue(shop_name);
                     databaseReference.child("Shops").child(String.valueOf(maxval+1)).child("OwnerName").setValue(owner_name);
+                    databaseReference.child("Shops").child(String.valueOf(maxval+1)).child("OwnerEmail").setValue(owner_email);
+                    databaseReference.child("Shops").child(String.valueOf(maxval+1)).child("ShopLocation").child("Latitude").setValue(shop_latitude);
+                    databaseReference.child("Shops").child(String.valueOf(maxval+1)).child("ShopLocation").child("Longitude").setValue(shop_longitude);
+
                 }else{
                     Toast.makeText(getApplicationContext(),"Select Any One Service",Toast.LENGTH_SHORT).show();
                 }
