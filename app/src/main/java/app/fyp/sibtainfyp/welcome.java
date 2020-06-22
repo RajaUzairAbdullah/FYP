@@ -69,6 +69,8 @@ public class welcome extends AppCompatActivity {
             }
         });
 
+
+
         //Google Login : Start
 
         //Signup Button
@@ -120,6 +122,7 @@ public class welcome extends AppCompatActivity {
             // Signed in successfully, show authenticated UI.
             String Name = account.getDisplayName();
             startActivity(new Intent(welcome.this, Dashboard.class));
+
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
@@ -132,6 +135,13 @@ public class welcome extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
+
+
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if(account != null) {
+            startActivity(new Intent(welcome.this, Dashboard.class));
+        }
+
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {

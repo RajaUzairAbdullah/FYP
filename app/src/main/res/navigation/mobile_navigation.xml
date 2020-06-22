@@ -23,16 +23,5 @@
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
 
-    <fragment
-        android:id="@+id/nav_tools"
-        android:name="app.fyp.sibtainfyp.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
-
-    <fragment
-        android:id="@+id/nav_share"
-        android:name="app.fyp.sibtainfyp.ui.share.ShareFragment"
-        android:label="@string/menu_shops"
-        tools:layout="@layout/fragment_share" />
 
 </navigation>

@@ -133,14 +133,14 @@ public class login extends AppCompatActivity {
 
             // FirebaseUser.getIdToken() instead.
             String uid = user.getUid();
-            Toast.makeText(getApplicationContext(), uid,
-                    Toast.LENGTH_LONG).show();
+//            Toast.makeText(getApplicationContext(), uid,
+//                    Toast.LENGTH_LONG).show();
             Intent intent=new Intent(getApplicationContext(),Dashboard.class);
             startActivity(intent);
             finish();
         }else{
-            Toast.makeText(getApplicationContext(), "Not Logged in ",
-                    Toast.LENGTH_LONG).show();
+//            Toast.makeText(getApplicationContext(), "Not Logged in ",
+//                    Toast.LENGTH_LONG).show();
         }
     }
 

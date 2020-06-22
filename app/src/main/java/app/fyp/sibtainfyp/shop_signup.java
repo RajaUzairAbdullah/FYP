@@ -116,7 +116,7 @@ public class shop_signup extends AppCompatActivity {
                                         String pass = md5(passagain.getText().toString());
                                         myRef.child(UID).child("Pass").setValue(pass);
                                         myRef.child(UID).child("UserType").setValue("ShopPerson");
-                                        Toast.makeText(getApplicationContext(), pass ,Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(getApplicationContext(), pass ,Toast.LENGTH_SHORT).show();
 
                                         Intent intent=new Intent(getApplicationContext(),shop_location.class);
                                         intent.putExtra("ShopOwner",shop_owner.getText().toString());

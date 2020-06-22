@@ -141,9 +141,9 @@ public class ShopServices extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     maxval = (dataSnapshot.getChildrenCount());
-                    Toast.makeText(getApplicationContext(), "if: "+String.valueOf(maxval) ,Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "if: "+String.valueOf(maxval) ,Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(getApplicationContext(), "else: "+String.valueOf(maxval) ,Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "else: "+String.valueOf(maxval) ,Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -160,15 +160,42 @@ public class ShopServices extends AppCompatActivity {
             public void onClick(View view) {
                 if(adapter.serviceselected.size()!=0){
 
-                    FirebaseAuth.getInstance().signOut();
+//                    FirebaseAuth.getInstance().signOut();
 
                     databaseReference.child("Shops").child(String.valueOf(maxval+1)).child("ShopName").setValue(shop_name);
                     databaseReference.child("Shops").child(String.valueOf(maxval+1)).child("OwnerName").setValue(owner_name);
                     databaseReference.child("Shops").child(String.valueOf(maxval+1)).child("OwnerEmail").setValue(owner_email);
-                    databaseReference.child("Shops").child(String.valueOf(maxval+1)).child("ShopLocation").child("Latitude").setValue(shop_latitude);
-                    databaseReference.child("Shops").child(String.valueOf(maxval+1)).child("ShopLocation").child("Longitude").setValue(shop_longitude);
+                    databaseReference.child("Shops").child(String.valueOf(maxval+1)).child("ShopLatitude").setValue(shop_latitude);
+                    databaseReference.child("Shops").child(String.valueOf(maxval+1)).child("ShopLongitude").setValue(shop_longitude);
 
-                }else{
+
+
+
+                    for(int i=0;i<adapter.serviceselected.size();i++){
+
+//                        databaseReference.child("Shops").child(String.valueOf(maxval+1)).child("ShopService"+(i+1)).setValue(adapter.serviceselected.get(i).toString());
+
+                        if(adapter.serviceselected.get(i).equals("Printer")){
+                            databaseReference.child("Shops").child(String.valueOf(maxval+1)).child("ShopServices").child("Printer").setValue("true");
+                        }else if(adapter.serviceselected.get(i).equals("Hard Binding")){
+                            databaseReference.child("Shops").child(String.valueOf(maxval+1)).child("ShopServices").child("Hard Binding").setValue("true");
+                        }else if(adapter.serviceselected.get(i).equals("Stationary")){
+                            databaseReference.child("Shops").child(String.valueOf(maxval+1)).child("ShopServices").child("Stationary").setValue("true");
+                        }else if(adapter.serviceselected.get(i).equals("Photocopy")){
+                            databaseReference.child("Shops").child(String.valueOf(maxval+1)).child("ShopServices").child("Photocopy").setValue("true");
+                        }else{
+
+                        }
+
+                    }
+
+                    Toast.makeText(getApplicationContext(), "Account Created Successfully",Toast.LENGTH_SHORT).show();
+
+                    Intent intent=new Intent(getApplicationContext(),ShopActivity.class);
+                    startActivity(intent);
+                    finish();
+
+                }else {
                     Toast.makeText(getApplicationContext(),"Select Any One Service",Toast.LENGTH_SHORT).show();
                 }
 

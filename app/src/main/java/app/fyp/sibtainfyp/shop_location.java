@@ -66,7 +66,6 @@ public class shop_location extends AppCompatActivity implements OnMapReadyCallba
     protected GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
     double latt =0, lonn=0;
-    global_var globalVariable = (global_var) getApplication();
 
 
     //Inent Things :  Start
@@ -95,7 +94,7 @@ public class shop_location extends AppCompatActivity implements OnMapReadyCallba
         owner_email = getIntent().getExtras().getString("OwnerEmail");
         ownervalidated_pass = getIntent().getExtras().getString("OwnerPass");
 
-        Toast.makeText(getApplicationContext(),owner_name+ " " +shop_name+ " "+owner_email,Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(),owner_name+ " " +shop_name+ " "+owner_email,Toast.LENGTH_SHORT).show();
 
 
         //Gettng intent Extra Data
@@ -192,9 +191,6 @@ public class shop_location extends AppCompatActivity implements OnMapReadyCallba
             Location mLastLocation = locationResult.getLastLocation();
             Log.v("lat",mLastLocation.getLatitude()+"");
 //            Log.v("lon",mLastLocation.getLongitude()+"");
-
-            globalVariable.setLatitude(mLastLocation.getLatitude()+"");
-            Log.v("loc",globalVariable.getLatitude());
         }
     };
 

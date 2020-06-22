@@ -92,8 +92,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share)
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -112,8 +111,8 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
                 databaseReference.child("currentloggedin").child(UID).removeValue();
                 databaseReference.child("currentloggedin").setValue("No One logged in");
                 FirebaseAuth.getInstance().signOut();
-                Toast.makeText(getApplicationContext(), "Not Logged in ",
-                        Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(), "Not Logged in ",
+//                        Toast.LENGTH_LONG).show();
                 Intent intent=new Intent(getApplicationContext(),login.class);
                 startActivity(intent);
                 finish();
@@ -183,11 +182,11 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
 
 
-            Toast.makeText(getApplicationContext(), uid,
-                    Toast.LENGTH_LONG).show();
+//            Toast.makeText(getApplicationContext(), uid,
+//                    Toast.LENGTH_LONG).show();
         }else{
-            Toast.makeText(getApplicationContext(), "Not Logged in ",
-                    Toast.LENGTH_LONG).show();
+//            Toast.makeText(getApplicationContext(), "Not Logged in ",
+//                    Toast.LENGTH_LONG).show();
         }
     }
 }

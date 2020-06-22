@@ -127,7 +127,7 @@ public class user_signup extends AppCompatActivity {
                                         myRef.child(UID).child("UserType").setValue("User");
 
                                         FirebaseAuth.getInstance().signOut();
-                                        Toast.makeText(getApplicationContext(), pass ,Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(getApplicationContext(), pass ,Toast.LENGTH_SHORT).show();
                                         Intent intent=new Intent(getApplicationContext(),confirmation.class);
                                         startActivity(intent);
                                         finish();

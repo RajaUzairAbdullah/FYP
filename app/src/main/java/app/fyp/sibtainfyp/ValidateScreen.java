@@ -50,7 +50,7 @@ public class ValidateScreen extends AppCompatActivity {
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("Users/UserDetails/"+UID);
-        Toast.makeText(ValidateScreen.this, ref.toString(),Toast.LENGTH_SHORT).show();
+//        Toast.makeText(ValidateScreen.this, ref.toString(),Toast.LENGTH_SHORT).show();
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -74,14 +74,17 @@ public class ValidateScreen extends AppCompatActivity {
                             if(UserType.equals("User")){
                                 Toast.makeText(ValidateScreen.this, "UserType : This is User",
                                         Toast.LENGTH_SHORT).show();
-//                                Intent intent=new Intent(getApplicationContext(),Dashboard.class);
-//                                startActivity(intent);
-//                                finish();
+                                Intent intent=new Intent(getApplicationContext(),Dashboard.class);
+                                startActivity(intent);
+                                finish();
 
                             }else if(UserType.equals("ShopPerson")){
 
-                                Toast.makeText(ValidateScreen.this, "UserType : This is ShopPerson",
-                                        Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(ValidateScreen.this, "UserType : This is ShopPerson",
+//                                        Toast.LENGTH_SHORT).show();
+                                Intent intent=new Intent(getApplicationContext(),ShopActivity.class);
+                                startActivity(intent);
+                                finish();
                             }else{
                                 Toast.makeText(ValidateScreen.this, "UserType : N/A",
                                         Toast.LENGTH_SHORT).show();
