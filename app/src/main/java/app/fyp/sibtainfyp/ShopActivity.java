@@ -30,6 +30,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class ShopActivity extends AppCompatActivity implements ShopHome.OnFragmentInteractionListener,NavigationView.OnNavigationItemSelectedListener {
 
@@ -51,15 +52,26 @@ public class ShopActivity extends AppCompatActivity implements ShopHome.OnFragme
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
 
-
         //gettting ameil and name from database saved data
         String name = user.getDisplayName();
         String email = user.getEmail();
+        String UID  = user.getUid();
 
 
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_shop_view);
+        View headerview = navigationView.getHeaderView(0);
+        TextView User_name = (TextView) headerview.findViewById(R.id.owner_name);
+        TextView User_email = (TextView) headerview.findViewById(R.id.owner_email);
+        User_name.setText(name);
+        User_email.setText(email);
+
+
+
+
+        DrawerLayout drawer = findViewById(R.id.drawer_shop_layout);
+
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.shopHome, R.id.shopDetails, R.id.shopOrders)
@@ -75,7 +87,7 @@ public class ShopActivity extends AppCompatActivity implements ShopHome.OnFragme
         shoplogoutbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_shop_layout);
                 drawer.closeDrawer(GravityCompat.START);
                 String UID = user.getUid();
                 databaseReference = FirebaseDatabase.getInstance().getReference();

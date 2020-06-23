@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -32,18 +31,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import app.fyp.sibtainfyp.R;
-import app.fyp.sibtainfyp.ShopServices;
-import app.fyp.sibtainfyp.ui.slideshow.SlideshowFragment;
+import app.fyp.sibtainfyp.ui.ShopDetails.ShopDetailsFragment;
+import app.fyp.sibtainfyp.ui.UserOrders.OrdersFragment;
 
 public class HomeFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     GoogleMap map;
     private Marker shopmarker;
 
-    private HomeViewModel homeViewModel;
     //Firabase Auth
     private FirebaseAuth mAuth;
     DatabaseReference databaseReference;
@@ -60,7 +57,7 @@ public class HomeFragment extends Fragment implements NavigationView.OnNavigatio
                              ViewGroup container, Bundle savedInstanceState) {
 
 
-        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
+
         final View root = inflater.inflate(R.layout.fragment_home, container, false);
 
 
@@ -174,15 +171,12 @@ public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Bundle args = new Bundle();
                 args.putString("ShopReference", data);
                 marker.setSnippet(null);
-                Toast.makeText(getContext(), marker.getTitle() + "   "+ data, Toast.LENGTH_SHORT).show();
 
-                SlideshowFragment slideshowFragment = new SlideshowFragment();
+                ShopDetailsFragment shopDetailsFragment = new ShopDetailsFragment();
                 FragmentManager fm = getParentFragmentManager();
-                fm.beginTransaction().replace(R.id.nav_host_fragment,slideshowFragment).commit();
+                fm.beginTransaction().replace(R.id.nav_host_fragment,shopDetailsFragment).commit();
 
-
-
-                slideshowFragment.setArguments(args);
+                shopDetailsFragment.setArguments(args);
 
                 return false;
             }
