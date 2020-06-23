@@ -8,11 +8,11 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,12 +25,13 @@ import app.fyp.sibtainfyp.Services;
 
 
 public class ShopServiceAdapter extends RecyclerView.Adapter<ShopServiceAdapter.ServiceViewHolder>{
+    Button btn,whiteblackprint,colorprint;
+    EditText printnumber;
+    AlertDialog.Builder alertbox;
+    View printerlayout,photocopylayout;
+    ArrayList<String> serviceselection = new ArrayList<String>();
 
-
-
-
-
-    //this context we will use to inflate the layout
+  //this context we will use to inflate the layout
     private Context Ctx;
     public String servicename;
 
@@ -72,29 +73,98 @@ public class ShopServiceAdapter extends RecyclerView.Adapter<ShopServiceAdapter.
                 holder.itemView.setSelected(true);
 
 
-                LayoutInflater inflater=(LayoutInflater) view.getRootView().getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View layout = inflater.inflate(R.layout.servicepopup,null);
-                AlertDialog.Builder alertbox = new AlertDialog.Builder(view.getRootView().getContext());
-//                alertbox.setTitle();
-                TextView title = new TextView(view.getRootView().getContext());
-// You Can Customise your Title here
-                title.setText(servicename);
-                title.setBackgroundColor(Color.DKGRAY);
-                title.setPadding(10, 10, 10, 10);
-                title.setGravity(Gravity.CENTER);
-                title.setTextColor(Color.WHITE);
-                title.setTextSize(20);
+               if(servicename.equals("Printer")){
+                   LayoutInflater inflater=(LayoutInflater) view.getRootView().getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                   printerlayout = inflater.inflate(R.layout.printerpopup,null);
+                   AlertDialog.Builder alertbox = new AlertDialog.Builder(view.getRootView().getContext());
+                   // alertbox.setTitle();
+                   TextView title = new TextView(view.getRootView().getContext());
+                   // You Can Customise your Title here
+                   title.setText(servicename);
+                   title.setBackgroundColor(Color.DKGRAY);
+                   title.setPadding(10, 20, 10, 20);
+                   title.setGravity(Gravity.CENTER);
+                   title.setTextColor(Color.WHITE);
+                   title.setTextSize(20);
 
-                alertbox.setCustomTitle(title);
-                alertbox.setView(layout);
-                alertbox.show();
+                   alertbox.setCustomTitle(title);
+                   alertbox.setView(printerlayout);
+                   alertbox.show();
+               }else if(servicename.equals("Photocopy")){
+                   LayoutInflater inflater=(LayoutInflater) view.getRootView().getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                   photocopylayout = inflater.inflate(R.layout.photocopypopup,null);
+                    alertbox = new AlertDialog.Builder(view.getRootView().getContext());
+                   TextView title = new TextView(view.getRootView().getContext());
+                   // You Can Customise your Title here
+                   title.setText(servicename);
+                   title.setBackgroundColor(Color.DKGRAY);
+                   title.setPadding(10, 20, 10, 20);
+                   title.setGravity(Gravity.CENTER);
+                   title.setTextColor(Color.WHITE);
+                   title.setTextSize(20);
+
+
+                   alertbox.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+                       @Override
+                       public void onClick(DialogInterface dialogInterface, int i) {
+                           dialogInterface.dismiss();
+                       }
+                   });
+
+                   alertbox.setCustomTitle(title);
+                   alertbox.setView(photocopylayout);
+                   alertbox.show();
+
+
+               }
+
+
+
+                btn  = (Button) printerlayout.findViewById(R.id.saveprinter);
+
+
+               //Printer Work
+                printnumber = (EditText) printerlayout.findViewById(R.id.printnum);
+                whiteblackprint = printerlayout.findViewById(R.id.BlackAndWhite);
+                colorprint = printerlayout.findViewById(R.id.ColorPrint);
+
+                whiteblackprint.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        serviceselection.add("BlackAndWhite Print");
+                    }
+                });
+
+
+                colorprint.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        serviceselection.add("Color Print");
+                    }
+                });
+
+
+                btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+//                        System.out.println(printnumber.getText().toString());
+                    }
+                });
+
+
+
+                //Printer Work
+
+
+
                 if(serviceselected.contains(servicename)){
 
                     holder.itemView.setBackgroundColor(Color.WHITE);
                     serviceselected.remove(servicename);
 
                 }else{
-                    holder.itemView.setBackgroundColor(Color.GRAY);
+                    holder.itemView.setBackgroundColor(Color.LTGRAY);
                     serviceselected.add(servicename);
                 }
 

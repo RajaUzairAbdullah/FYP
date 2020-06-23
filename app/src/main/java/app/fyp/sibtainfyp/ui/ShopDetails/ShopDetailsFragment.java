@@ -251,7 +251,7 @@ public class ShopDetailsFragment extends Fragment implements OnMapReadyCallback 
 //
 //                    shopDetailsFragment.setArguments(args);
                 }else {
-                    Toast.makeText(getContext(), "elect 1 servcee", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "select one/more service", Toast.LENGTH_SHORT).show();
                 }
 
             }
