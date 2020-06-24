@@ -207,7 +207,7 @@ public class ShopDetailsFragment extends Fragment implements OnMapReadyCallback 
                     servicetList.add(
                             new Services(
                                     4,
-                                    "Stationary",
+                                    "Stationery",
                                     R.drawable.stationary));
 
                 }else{

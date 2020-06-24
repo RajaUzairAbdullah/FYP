@@ -4,7 +4,6 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_marginTop="30dp"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_below="@id/shopname"
         android:layout_centerHorizontal="true"
@@ -12,12 +11,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="2"
-        >
+        android:layout_marginTop="20dp">
 
         <Button
-            android:id="@+id/BlackAndWhite_Photocopy"
-            android:text="Black and White"
-            android:textSize="15dp"
+            android:id="@+id/inkpen"
+            android:text="Ink Pen"
+            android:textSize="17dp"
             android:gravity="center"
             android:layout_marginRight="10dp"
             android:layout_width="match_parent"
@@ -26,66 +25,49 @@
 
         <Button
             android:gravity="center"
-            android:id="@+id/ColorPhohocopy"
-            android:textSize="15dp"
+            android:id="@+id/pencil"
+            android:textSize="17dp"
             android:layout_marginLeft="10dp"
-            android:text="Color"
+            android:text="Pencil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
 
     </LinearLayout>
 
+
     <LinearLayout
-        android:layout_marginTop="30dp"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_below="@id/shopname"
         android:layout_centerHorizontal="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="4">
+        android:weightSum="2"
+        android:layout_marginTop="10dp">
 
-        <TextView
-            android:text="Quantity : "
+        <Button
+            android:id="@+id/inkremover"
+            android:text="Ink Remover"
             android:textSize="17dp"
-            android:paddingRight="5dp"
-            android:gravity="end"
-            android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-
-        <EditText
-            android:id="@+id/blackwhitephotocopy_num"
-            android:inputType="number"
             android:gravity="center"
-            android:textSize="17dp"
-            android:layout_marginLeft="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-        <TextView
-            android:text="Quantity : "
-            android:textSize="17dp"
-            android:paddingRight="5dp"
-            android:gravity="start"
             android:layout_marginRight="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
 
-        <EditText
-            android:id="@+id/colorphotocopy_num"
-            android:inputType="number"
-            android:gravity="start"
+        <Button
+            android:gravity="center"
+            android:id="@+id/Geometry"
             android:textSize="17dp"
             android:layout_marginLeft="10dp"
+            android:text="Geometry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
 
     </LinearLayout>
+
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_below="@id/shopname"
@@ -96,7 +78,7 @@
         android:weightSum="1"
         >
         <Button
-            android:id="@+id/savephotocopy"
+            android:id="@+id/savestationary"
             android:layout_margin="40dp"
             android:text="Save"
             android:textSize="17dp"

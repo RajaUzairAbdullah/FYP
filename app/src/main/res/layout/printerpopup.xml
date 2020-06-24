@@ -43,10 +43,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="2">
+        android:weightSum="4">
+
+
 
         <TextView
-            android:text="Enter Number : "
+            android:text="Quantity : "
             android:textSize="17dp"
             android:paddingRight="5dp"
             android:gravity="end"
@@ -56,9 +58,28 @@
             android:layout_weight="1"/>
 
         <EditText
-            android:id="@+id/printnum"
+            android:id="@+id/blackwhiteprint_num"
             android:inputType="number"
             android:gravity="center"
+            android:textSize="17dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <TextView
+            android:text="Quantity : "
+            android:textSize="17dp"
+            android:paddingRight="5dp"
+            android:gravity="start"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <EditText
+            android:id="@+id/colorprint_num"
+            android:inputType="number"
+            android:gravity="start"
             android:textSize="17dp"
             android:layout_marginLeft="10dp"
             android:layout_width="match_parent"

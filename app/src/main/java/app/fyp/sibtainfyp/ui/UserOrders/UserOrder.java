@@ -1,13 +1,12 @@
-package app.fyp.sibtainfyp;
+package app.fyp.sibtainfyp.ui.UserOrders;
 
-public class Services {
+public class UserOrder {
     private int id;
-//    private boolean isSelected;
 
     private String title;
     private int image;
 
-    public Services(int id, String title,int image) {
+    public UserOrder(int id, String title, int image) {
         this.title = title;
         this.id = id;
         this.image = image;
@@ -26,11 +25,4 @@ public class Services {
     }
 
 
-//    public void setSelected(boolean selection){
-//        this.isSelected = selection;
-//    }
-//
-//    public boolean isSelected(){
-//        return isSelected;
-//    }
 }
